@@ -27,9 +27,12 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
+const secret = '289160db0d9f39f9ae1754c4ec9c16f90b50e32e09c5fb5481ae642b3d3d1a36';
+
 // INstantiating the express-jwt middleware
 const jwtMW = exjwt({
-    secret: 'keyboard cat 4 ever'
+    secret: secret
 });
 
 
@@ -60,7 +63,7 @@ app.post('/login', (req, res) => {
     if(user.length > 0) {
         user = user[0];
 
-        let token = jwt.sign({ id: user.id, username: user.username }, 'keyboard cat 4 ever', { expiresIn: 129600 }); // Sigining the token
+        let token = jwt.sign({ id: user.id, username: user.username }, secret, { expiresIn: 129600 }); // Sigining the token
         res.json({
             sucess: true,
             err: null,
