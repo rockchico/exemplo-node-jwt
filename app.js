@@ -40,8 +40,8 @@ const jwtMW = exjwt({
 let users = [
     {
         id: 1,
-        username: 'test',
-        password: 'asdf123'
+        username: 'teste123',
+        password: 'teste123'
     },
     {
         id: 2,
